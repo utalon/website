@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utalon's GitHub Page</title>
+<style>
+:root {
+  --site-primary: #8b5cf6;
+  --site-secondary: #13d9d2;
+  --site-background: #080a16;
+  --site-on-primary: #ffffff;
+  --site-on-secondary: #041515;
+  --site-on-background: #f4f3ff;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); background: #080a16; color: #f4f3ff; }
+#app { min-height: 100vh; width: 100%; overflow: hidden; position: relative; isolation: isolate; background-color: light-dark(var(--site-background), var(--site-background)); color: light-dark(var(--site-on-background), var(--site-on-background)); border-radius: 0; }
+.ambient { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: var(--site-decoration-opacity); overflow: hidden; }
+.orb { position: absolute; border-radius: 50%; filter: blur(85px); animation: float 13s ease-in-out infinite alternate; }
+.orb.one { width: 420px; height: 420px; background: #713cff; opacity: .32; top: -180px; left: -100px; }
+.orb.two { width: 380px; height: 380px; background: #00d6cb; opacity: .22; right: -150px; top: 260px; animation-delay: -4s; }
+.orb.three { width: 300px; height: 300px; background: #d13bff; opacity: .17; bottom: -130px; left: 38%; animation-delay: -8s; }
+@keyframes float { to { transform: translate(45px, 55px) scale(1.12); } }
+.noise { position: absolute; inset: 0; opacity: .045; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E"); }
+nav { max-width: 1020px; margin: auto; padding: calc(28px * var(--site-spacing-scale)) 28px; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.04em; font-size: 19px; }
+.brand-mark { width: 31px; height: 31px; border-radius: 10px; background: linear-gradient(135deg, var(--site-primary), var(--site-secondary)); box-shadow: 0 0 24px #8b5cf688; display: grid; place-items: center; color: white; font-size: 17px; }
+.navlinks { display: flex; align-items: center; gap: 30px; color: #aaa9c2; font-size: 13px; }
+.navlinks a { color: inherit; text-decoration: none; transition: color .2s; }
+.navlinks a:hover { color: white; }
+.nav-cta, .button { border: 0; border-radius: calc(12px * var(--site-radius-scale)); padding: 12px 18px; font-weight: 700; font-size: 13px; cursor: pointer; color: white; background: linear-gradient(110deg, #8055f5, #5e73ef 55%, #19bdb9); box-shadow: 0 8px 30px #7555ef40, inset 0 1px #ffffff55; transition: transform .2s, box-shadow .2s; }
+.nav-cta:hover, .button:hover { transform: translateY(-2px); box-shadow: 0 12px 35px #7555ef70; }
+.hero { max-width: 1020px; margin: auto; padding: 94px 28px 86px; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 45px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 9px; color: #c9baff; background: #9b7aff16; border: 1px solid #a98cff35; border-radius: 999px; padding: 8px 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+.pulse { width: 7px; height: 7px; border-radius: 50%; background: #53f5d9; box-shadow: 0 0 12px #53f5d9; }
+h1 { font-family: var(--site-font-heading); font-size: clamp(52px, 6vw, 78px); line-height: .99; letter-spacing: -.075em; margin: 25px 0 22px; max-width: 520px; }
+.gradient-text { background: linear-gradient(100deg, #c5a8ff 4%, #8f79ff 40%, #55e6db 95%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 25px #9274ff55); }
+.lead { max-width: 490px; color: #aaa9c2; line-height: 1.8; font-size: 16px; }
+.hero-actions { display: flex; gap: 13px; align-items: center; margin-top: 32px; flex-wrap: wrap; }
+.button { padding: 15px 21px; }
+.button.secondary { background: #ffffff09; border: 1px solid #ffffff25; box-shadow: none; color: #e9e7ff; }
+.micro { color: #797892; font-size: 11px; margin-top: 18px; }
+.visual { min-height: 430px; position: relative; display: grid; place-items: center; }
+.halo { position: absolute; width: min(390px, 90%); aspect-ratio: 1; border-radius: 50%; border: 1px solid #a58cff38; box-shadow: 0 0 80px #8b5cf622, inset 0 0 70px #8b5cf615; animation: breathe 5s ease-in-out infinite; }
+.halo:before, .halo:after { content: ""; position: absolute; inset: 25px; border: 1px solid #45dcd433; border-radius: 50%; transform: rotateX(68deg) rotateZ(22deg); }
+.halo:after { inset: -22px; transform: rotateX(68deg) rotateZ(-38deg); border-color: #a78bfa33; }
+@keyframes breathe { 50% { transform: scale(1.035); opacity: .7; } }
+.core { width: 210px; height: 210px; border-radius: 48px; transform: rotate(-12deg); background: linear-gradient(145deg, #a78bfa, #6444d8 52%, #12c9c1); box-shadow: 0 0 35px #8b5cf699, 0 0 110px #6f50ef55, inset 0 2px 4px #ffffff99, inset 0 -12px 30px #080a1666; display: grid; place-items: center; position: relative; }
+.core:before { content: "✦"; color: white; font-size: 90px; transform: rotate(12deg); text-shadow: 0 0 35px #fff; }
+.float-card { position: absolute; padding: 13px 16px; border-radius: 15px; background: #15162bba; border: 1px solid #ffffff20; backdrop-filter: blur(18px); box-shadow: 0 15px 45px #0005; font-size: 12px; color: #dedcf5; }
+.float-card strong { display: block; font-size: 16px; margin-bottom: 3px; color: white; }
+.float-card.a { top: 65px; right: 0; }.float-card.b { bottom: 62px; left: 0; }
+.spark { position: absolute; color: #b6a0ff; text-shadow: 0 0 16px #a78bfa; font-size: 24px; }.s1 { top: 58px; left: 15%; }.s2 { right: 12%; bottom: 75px; font-size: 16px; }
+.stats { max-width: 1020px; margin: 0 auto; padding: 24px 28px 55px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #ffffff13; }
+.stat { text-align: center; border-right: 1px solid #ffffff14; }.stat:last-child { border: 0; }.stat strong { display: block; font-size: 25px; letter-spacing: -.04em; }.stat span { color: #85839e; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.features { max-width: 1020px; margin: auto; padding: 48px 28px 100px; }
+.section-head { text-align: center; margin-bottom: 34px; }.section-head h2 { font-size: clamp(28px, 4vw, 42px); letter-spacing: -.055em; margin: 0 0 10px; }.section-head p { color: #9290aa; margin: 0; font-size: 14px; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card { border: 1px solid #ffffff16; border-radius: calc(20px * var(--site-radius-scale)); padding: 25px; background: linear-gradient(145deg, #ffffff0d, #ffffff04); box-shadow: inset 0 1px #ffffff0c; transition: transform .25s, border-color .25s, box-shadow .25s; }
+.card:hover { transform: translateY(-6px); border-color: #9b83ff66; box-shadow: 0 15px 45px #6848d522; }
+.iconbox { width: 43px; height: 43px; border-radius: 13px; display: grid; place-items: center; background: linear-gradient(145deg, #9b7aff30, #22d5c522); border: 1px solid #a98cff33; color: #c5b4ff; font-size: 20px; margin-bottom: 21px; }
+.card h3 { margin: 0 0 9px; font-size: 16px; }.card p { margin: 0; color: #9290aa; line-height: 1.7; font-size: 13px; }
+footer { max-width: 1020px; margin: auto; padding: 23px 28px 35px; display: flex; justify-content: space-between; border-top: 1px solid #ffffff12; color: #74728e; font-size: 11px; }
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: #1c1a35; color: white; border: 1px solid #9b83ff77; padding: 13px 18px; border-radius: 12px; box-shadow: 0 0 35px #8055f555; font-size: 13px; transition: .25s; z-index: 5; }.toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 760px) { .navlinks { display: none; } .hero { grid-template-columns: 1fr; padding-top: 55px; gap: 15px; } .visual { min-height: 350px; } .core { width: 165px; height: 165px; border-radius: 39px; }.core:before { font-size: 70px; }.halo { width: 300px; }.float-card.a { right: 2%; top: 25px; }.float-card.b { left: 2%; bottom: 30px; }.cards { grid-template-columns: 1fr; }.stats { padding-bottom: 30px; }.stat strong { font-size: 20px; } footer { gap: 12px; flex-wrap: wrap; } }
+@media (prefers-reduced-motion: reduce) { *, *:before, *:after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="ambient" aria-hidden="true"><div class="orb one"></div><div class="orb two"></div><div class="orb three"></div><div class="noise"></div></div>
+  <nav>
+    <div class="brand"><div class="brand-mark">✦</div> Utalon's GitHub Page</div>
+    <div class="navlinks"><a href="#features">Features</a><a href="#downloads">Downloads</a><a href="#about">About</a></div>
+    <button class="nav-cta" onclick="document.querySelector('#features').scrollIntoView({behavior:'smooth'})">Explore tools ↗</button>
+  </nav>
+  <main>
+    <section class="hero" id="about">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> The modding hub, reimagined</div>
+        <h1>Utalon's Tools<br>from<br><span class="gradient-text">GitHub.</span></h1>
+        <p class="lead">Your hub for Utalon's utilities, console tools, and homebrew essentials. Explore a cleaner way to find the tools that power your setup.</p>
+        <div class="hero-actions"><button class="button" onclick="document.querySelector('#features').scrollIntoView({behavior:'smooth'})">Explore tools <span aria-hidden="true">↗</span></button><button class="button secondary" onclick="showToast('Built with AI, for the Xbox 360 community ✨')">About the project <span aria-hidden="true">＋</span></button></div>
+        <div class="micro">✧ &nbsp; Coded with 100% AI.</div>
+      </div>
+      <div class="visual" aria-label="Glowing abstract purple and teal object">
+        <div class="halo"></div><div class="core"></div><div class="spark s1">✧</div><div class="spark s2">✦</div>
+        <div class="float-card a"><strong>Utalon's</strong><span>Tools for anything.</span></div>
+        <div class="float-card b"><strong>100% AI coded</strong><span>Built for the community</span></div>
+      </div>
+    </section>
+    <section class="stats" aria-label="Highlights"><div class="stat"><strong>Utalon's</strong><span>GitHub repositories</span></div><div class="stat"><strong>100%</strong><span>AI coded</span></div><div class="stat"><strong>∞</strong><span>Possibilities</span></div></section>
+    <section class="features" id="features">
+      <div class="section-head"><h2>Everything from <span class="gradient-text">Utalon.</span></h2><p>A glowing home for console tools, utilities, and modding resources.</p></div>
+      <div class="cards">
+        <article class="card"><div class="iconbox">⌘</div><h3>Console utilities</h3><p>A dedicated place to discover useful tools for managing and working with your Xbox 360.</p></article>
+        <article class="card"><div class="iconbox">◈</div><h3>Modding essentials</h3><p>Explore resources for RGH consoles, homebrew setups, and the wider Xbox 360 scene.</p></article>
+        <article class="card"><div class="iconbox">✦</div><h3>AI-built experience</h3><p>Tools coded by Utalon and AI.</p></article>
+        <article class="card"><div class="iconbox">⌁</div><h3>Guides &amp; tutorials</h3><p>Helpful walkthroughs and setup tips to make the most of your Xbox 360 tools.</p></article>
+        <article class="card"><div class="iconbox">◎</div><h3>Community resources</h3><p>Discover useful resources, recommendations, and projects from the Xbox 360 modding scene.</p></article>
+      </div>
+    </section>
+    <section class="features" id="downloads">
+      <div class="section-head"><h2>Your <span class="gradient-text">Downloads.</span></h2><p>Xbox 360 utilities and files, all in one place. More downloads will be added as they’re uploaded.</p></div>
+      <div class="cards">
+        <article class="card"><div class="iconbox">▣</div><h3>ISO Extractor</h3><p>Windows utility packaged as a ZIP archive. Includes <strong>ISO Extractor.exe</strong> for working with Xbox 360 ISO files.</p><a class="button" style="display:inline-block;margin-top:18px;text-decoration:none" href="https://github.com/utalon/Xbox360-ISOExtractor/releases/download/v1/ISO.Extractor.zip">Get ISO Extractor ↗</a>
+          <a class="button secondary" style="display:inline-block;margin-top:18px;margin-left:8px;text-decoration:none" href="https://github.com/utalon/Xbox360-ISOExtractor" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a><div class="micro">ZIP archive · 10.3 MB</div></article>
+      </div>
+    </section>
+  </main>
+  <footer id="contact"><span>Coded with 100% AI. ✦</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+<script>
+let toastTimer;
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+}
+</script>
+</body>
+</html>
