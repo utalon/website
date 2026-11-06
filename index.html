@@ -77,57 +77,16 @@ footer { max-width: 1020px; margin: auto; padding: 23px 28px 35px; display: flex
 <body>
 <div id="app">
   <div class="ambient" aria-hidden="true"><div class="orb one"></div><div class="orb two"></div><div class="orb three"></div><div class="noise"></div></div>
-  <nav>
-    <div class="brand"><div class="brand-mark">✦</div> Utalon's GitHub Page</div>
-    <div class="navlinks"><a href="#features">Features</a><a href="#downloads">Downloads</a><a href="#about">About</a></div>
-    <button class="nav-cta" onclick="document.querySelector('#features').scrollIntoView({behavior:'smooth'})">Explore tools ↗</button>
-  </nav>
   <main>
-    <section class="hero" id="about">
-      <div>
-        <div class="eyebrow"><span class="pulse"></span> The modding hub, reimagined</div>
-        <h1>Utalon's Tools<br>from<br><span class="gradient-text">GitHub.</span></h1>
-        <p class="lead">Your hub for Utalon's utilities, console tools, and homebrew essentials. Explore a cleaner way to find the tools that power your setup.</p>
-        <div class="hero-actions"><button class="button" onclick="document.querySelector('#features').scrollIntoView({behavior:'smooth'})">Explore tools <span aria-hidden="true">↗</span></button><button class="button secondary" onclick="showToast('Built with AI, for the Xbox 360 community ✨')">About the project <span aria-hidden="true">＋</span></button></div>
-        <div class="micro">✧ &nbsp; Coded with 100% AI.</div>
-      </div>
-      <div class="visual" aria-label="Glowing abstract purple and teal object">
-        <div class="halo"></div><div class="core"></div><div class="spark s1">✧</div><div class="spark s2">✦</div>
-        <div class="float-card a"><strong>Utalon's</strong><span>Tools for anything.</span></div>
-        <div class="float-card b"><strong>100% AI coded</strong><span>Built for the community</span></div>
-      </div>
-    </section>
-    <section class="stats" aria-label="Highlights"><div class="stat"><strong>Utalon's</strong><span>GitHub repositories</span></div><div class="stat"><strong>100%</strong><span>AI coded</span></div><div class="stat"><strong>∞</strong><span>Possibilities</span></div></section>
-    <section class="features" id="features">
-      <div class="section-head"><h2>Everything from <span class="gradient-text">Utalon.</span></h2><p>A glowing home for console tools, utilities, and modding resources.</p></div>
-      <div class="cards">
-        <article class="card"><div class="iconbox">⌘</div><h3>Console utilities</h3><p>A dedicated place to discover useful tools for managing and working with your Xbox 360.</p></article>
-        <article class="card"><div class="iconbox">◈</div><h3>Modding essentials</h3><p>Explore resources for RGH consoles, homebrew setups, and the wider Xbox 360 scene.</p></article>
-        <article class="card"><div class="iconbox">✦</div><h3>AI-built experience</h3><p>Tools coded by Utalon and AI.</p></article>
-        <article class="card"><div class="iconbox">⌁</div><h3>Guides &amp; tutorials</h3><p>Helpful walkthroughs and setup tips to make the most of your Xbox 360 tools.</p></article>
-        <article class="card"><div class="iconbox">◎</div><h3>Community resources</h3><p>Discover useful resources, recommendations, and projects from the Xbox 360 modding scene.</p></article>
-      </div>
-    </section>
-    <section class="features" id="downloads">
-      <div class="section-head"><h2>Your <span class="gradient-text">Downloads.</span></h2><p>Xbox 360 utilities and files, all in one place. More downloads will be added as they’re uploaded.</p></div>
+    <section class="features" id="downloads" style="padding-top: 90px; min-height: calc(100vh - 60px);">
+      <div class="section-head"><h2><span class="gradient-text">Downloads.</span></h2><p>Files, all in one place. More downloads will be added as they’re uploaded.</p></div>
       <div class="cards">
         <article class="card"><div class="iconbox">▣</div><h3>ISO Extractor</h3><p>Windows utility packaged as a ZIP archive. Includes <strong>ISO Extractor.exe</strong> for working with Xbox 360 ISO files.</p><a class="button" style="display:inline-block;margin-top:18px;text-decoration:none" href="https://github.com/utalon/Xbox360-ISOExtractor/releases/download/v1/ISO.Extractor.zip">Get ISO Extractor ↗</a>
           <a class="button secondary" style="display:inline-block;margin-top:18px;margin-left:8px;text-decoration:none" href="https://github.com/utalon/Xbox360-ISOExtractor" target="_blank" rel="noopener noreferrer">View on GitHub ↗</a><div class="micro">ZIP archive · 10.3 MB</div></article>
       </div>
     </section>
   </main>
-  <footer id="contact"><span>Coded with 100% AI. ✦</span></footer>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 </div>
-<script>
-let toastTimer;
-function showToast(message) {
-  const toast = document.getElementById('toast');
-  toast.textContent = message;
-  toast.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
-}
-</script>
 </body>
 </html>
